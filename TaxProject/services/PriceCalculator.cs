@@ -18,7 +18,16 @@ namespace TaxProject.services
             var taxAmount = _tax.GetTaxAmount(price);
             var discountAmount = _discount.GetDiscountAmuont(price);
             var totalPrice = price + taxAmount - discountAmount;
+            Report(discountAmount);
             return totalPrice;
+        }
+
+        private void Report(decimal discountAmount)
+        {
+            if (discountAmount > 0)
+            {
+                Console.WriteLine($"${discountAmount} amount which was deduced");
+            }
         }
     }
 }
