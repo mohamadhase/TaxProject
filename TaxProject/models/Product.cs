@@ -1,4 +1,4 @@
-﻿namespace TaxProject
+﻿namespace TaxProject.models
 {
     public class Product
     {

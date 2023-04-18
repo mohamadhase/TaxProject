@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaxProject.interfaces;
+﻿using TaxProject.interfaces;
 namespace TaxProject.services
 {
- 
+
 
     public class DiscountService : IDiscountService
     {

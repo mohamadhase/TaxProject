@@ -1,4 +1,6 @@
-﻿namespace TaxProject
+﻿using TaxProject.interfaces;
+
+namespace TaxProject.services
 {
     public class TaxService : ITaxService
     {
@@ -10,7 +12,7 @@
 
         public decimal GetTaxAmount(decimal price)
         {
-            return Math.Round(price * TaxPercentage,2);
+            return Math.Round(price * TaxPercentage, 2);
         }
     }
 }

@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TaxProject.interfaces;
+﻿using TaxProject.interfaces;
+using TaxProject.models;
 
-namespace TaxProject
+namespace TaxProject.services
 {
     public class PriceCalculator : IPriceCalculator
     {
         private readonly ITaxService _tax;
         private readonly IDiscountService _discount;
-        public PriceCalculator(ITaxService tax,IDiscountService discount)
+        public PriceCalculator(ITaxService tax, IDiscountService discount)
         {
             _tax = tax;
             _discount = discount;
