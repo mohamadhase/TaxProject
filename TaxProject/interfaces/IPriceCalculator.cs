@@ -1,4 +1,6 @@
-﻿namespace TaxProject
+﻿using TaxProject.models;
+
+namespace TaxProject.interfaces
 {
     public interface IPriceCalculator
     {

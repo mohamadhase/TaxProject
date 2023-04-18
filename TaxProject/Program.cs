@@ -1,14 +1,18 @@
-﻿namespace TaxProject
+﻿using TaxProject.models;
+using TaxProject.services;
+
+namespace TaxProject
 {
     internal class Program
     {
         private static void Main(string[] args)
         {
-            var product = new Product("Milk", 20.25m, 123456);
-            var tax = new TaxService();
-            var priceCalculator = new PriceCalculator(tax);
-            Console.WriteLine($"Price before Tax : {product.Price}");
-            Console.WriteLine($"Price after Tax : {priceCalculator.CalculateTotalPrice(product)}");
+            Product product = new("Milk", 20.25m, 123456);
+            TaxService tax = new();
+            DiscountService discount = new(0.15m);
+            PriceCalculator priceCalculator = new(tax, discount);
+            Console.WriteLine($"Price before Tax and Discount : ${product.Price}");
+            Console.WriteLine($"Price after Tax And Discount : ${priceCalculator.CalculateTotalPrice(product)}");
 
         }
     }

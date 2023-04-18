@@ -1,4 +1,4 @@
-﻿namespace TaxProject
+﻿namespace TaxProject.interfaces
 {
     public interface ITaxService
     {
