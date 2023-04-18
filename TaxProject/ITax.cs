@@ -4,6 +4,6 @@
     {
         decimal TaxPercentage { get; set; }
 
-        decimal GetTaxAnount(decimal price);
+        decimal GetTaxAmount(decimal price);
     }
 }

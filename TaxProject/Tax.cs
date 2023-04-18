@@ -3,9 +3,9 @@
     public class Tax : ITax
     {
         public decimal TaxPercentage { get; set; }
-        public decimal GetTaxAnount(decimal price)
+        public decimal GetTaxAmount(decimal price)
         {
-            return price * TaxPercentage;
+            return Math.Round(price * TaxPercentage,2);
         }
     }
 }
