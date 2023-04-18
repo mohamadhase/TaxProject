@@ -1,9 +1,9 @@
 ﻿namespace TaxProject
 {
-    public class Tax : ITaxService
+    public class TaxService : ITaxService
     {
         public decimal TaxPercentage { get; set; }
-        public Tax(decimal taxPercentage = 0.20m)
+        public TaxService(decimal taxPercentage = 0.20m)
         {
             TaxPercentage = taxPercentage;
         }

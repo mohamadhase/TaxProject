@@ -1,6 +1,6 @@
 ﻿namespace TaxProject
 {
-    public interface ITax
+    public interface ITaxService
     {
         decimal TaxPercentage { get; set; }
 
