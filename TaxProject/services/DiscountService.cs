@@ -1,8 +1,6 @@
 ﻿using TaxProject.interfaces;
 namespace TaxProject.services
 {
-
-
     public class DiscountService : IDiscountService
     {
         public decimal DiscountPercentage { get; set; }

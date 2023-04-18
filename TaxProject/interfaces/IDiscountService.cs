@@ -2,7 +2,6 @@
 {
     public interface IDiscountService
     {
-
         decimal GetDiscountAmuont(decimal price);
     }
 }

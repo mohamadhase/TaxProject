@@ -7,6 +7,7 @@ namespace TaxProject.services
     {
         private readonly ITaxService _tax;
         private readonly IDiscountService _discount;
+
         public PriceCalculator(ITaxService tax, IDiscountService discount)
         {
             _tax = tax;
