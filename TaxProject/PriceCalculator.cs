@@ -8,7 +8,7 @@ namespace TaxProject
 {
     public class PriceCalculator : IPriceCalculator
     {
-        private ITaxService _tax;
+        private readonly ITaxService _tax;
         public PriceCalculator(ITaxService tax)
         {
             _tax = tax;
