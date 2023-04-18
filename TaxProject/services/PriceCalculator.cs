@@ -7,28 +7,23 @@ namespace TaxProject.services
     {
         private readonly ITaxService _tax;
         private readonly IDiscountService _discount;
+        private readonly IReportService _report;
 
-        public PriceCalculator(ITaxService tax, IDiscountService discount)
+        public PriceCalculator(ITaxService tax, IDiscountService discount, IReportService report)
         {
             _tax = tax;
             _discount = discount;
+            _report = report;
         }
+
         public decimal CalculateTotalPrice(Product product)
         {
             var price = product.Price;
             var taxAmount = _tax.GetTaxAmount(price);
             var discountAmount = _discount.GetDiscountAmuont(price);
             var totalPrice = price + taxAmount - discountAmount;
-            Report(discountAmount);
+            _report.Report(price,totalPrice,discountAmount);
             return totalPrice;
-        }
-
-        private void Report(decimal discountAmount)
-        {
-            if (discountAmount > 0)
-            {
-                Console.WriteLine($"${discountAmount} amount which was deduced");
-            }
         }
     }
 }
