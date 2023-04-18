@@ -12,6 +12,7 @@ namespace TaxProject
             var discount = new DiscountService(0.15m);
             var report = new ReportService();
             var priceCalculator = new PriceCalculator(tax, discount,report);
+            priceCalculator.CalculateTotalPrice(product);
         }
     }
 }
