@@ -10,9 +10,9 @@ namespace TaxProject.services
     public class DiscountCalculator : IDiscountCalculator
     {
         private readonly IDiscountService _discountService;
-        private readonly ISelectiveDiscount _selectiveDiscount;
+        private readonly ISelectiveDiscountService _selectiveDiscount;
 
-        public DiscountCalculator(IDiscountService discountService, ISelectiveDiscount selectiveDiscount)
+        public DiscountCalculator(IDiscountService discountService, ISelectiveDiscountService selectiveDiscount)
         {
             _discountService = discountService;
             _selectiveDiscount = selectiveDiscount;

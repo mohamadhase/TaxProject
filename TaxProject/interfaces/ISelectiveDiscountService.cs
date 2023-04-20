@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TaxProject.interfaces
 {
-    public interface ISelectiveDiscount
+    public interface ISelectiveDiscountService
     {
         decimal GetDiscountAmount(decimal price, int ups);
     }

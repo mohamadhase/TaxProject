@@ -7,12 +7,12 @@ using TaxProject.interfaces;
 
 namespace TaxProject.services
 {
-    public class SelectiveDiscount : ISelectiveDiscount
+    public class SelectiveDiscountService : ISelectiveDiscountService
     {
         public decimal DiscountPercentage { get; set; }
         public int UPS { get; set; }
 
-        public SelectiveDiscount(decimal discountPercentage, int uPS)
+        public SelectiveDiscountService(decimal discountPercentage, int uPS)
         {
             DiscountPercentage = discountPercentage;
             UPS = uPS;

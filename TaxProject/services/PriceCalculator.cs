@@ -6,13 +6,13 @@ namespace TaxProject.services
     public class PriceCalculator : IPriceCalculator
     {
         private readonly ITaxService _tax;
-        private readonly IDiscountService _discount;
         private readonly IReportService _report;
+        private readonly IDiscountCalculator _discountCalculator;
 
-        public PriceCalculator(ITaxService tax, IDiscountService discount, IReportService report)
+        public PriceCalculator(ITaxService tax, IDiscountCalculator discountCalculator, IReportService report)
         {
             _tax = tax;
-            _discount = discount;
+            _discountCalculator = discountCalculator;
             _report = report;
         }
 
@@ -20,9 +20,9 @@ namespace TaxProject.services
         {
             var price = product.Price;
             var taxAmount = _tax.GetTaxAmount(price);
-            var discountAmount = _discount.GetDiscountAmuont(price);
-            var totalPrice = price + taxAmount - discountAmount;
-            _report.Report(price,totalPrice,discountAmount);
+            var TotalDiscount = _discountCalculator.GetTotalDiscount(price, product.UPC);
+            var totalPrice = price + taxAmount - TotalDiscount;
+            _report.Report(price,totalPrice, TotalDiscount);
             return totalPrice;
         }
     }
