@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaxProject.enums;
 using TaxProject.interfaces;
 
 namespace TaxProject.services
@@ -18,12 +19,24 @@ namespace TaxProject.services
             _selectiveDiscount = selectiveDiscount;
         }
 
-        public decimal GetTotalDiscount(decimal price, int upc)
+        public DiscountOrder GetDiscountOrder()
         {
-            var discountAmount = _discountService.GetDiscountAmuont(price);
-            var selectiveDiscountAmount = _selectiveDiscount.GetDiscountAmount(price, upc);
-            return discountAmount + selectiveDiscountAmount;
+            return _discountService.DiscountOrder;
 
+        }
+
+        public DiscountOrder GetSelectiveDiscountOrder()
+        {
+            return _selectiveDiscount.DiscountOrder;
+        }
+
+        public decimal GetDiscountAmuont(decimal price)
+        {
+            return _discountService.GetDiscountAmuont(price);
+        }
+        public decimal GetSelectiveDiscountAmount(decimal price, int upc)
+        {
+            return _selectiveDiscount.GetDiscountAmount(price, upc);
         }
     }
 }
