@@ -59,8 +59,9 @@ namespace TaxProject.services
                  selectiveDiscountAmount = _discountCalculator.GetSelectiveDiscountAmount(price, product.UPC);
                  totalDiscount = discountAmount + selectiveDiscountAmount;
             }
-            totalPrice = product.Price + taxAmount - totalDiscount;
-            _report.Report(price, totalPrice, totalDiscount);
+            var totalExpensesCost = product.GetTotalExpenses();
+            totalPrice = product.Price + taxAmount - totalDiscount + totalExpensesCost;
+            _report.Report(product, totalPrice, totalDiscount,taxAmount);
             return totalPrice;
         }
     }

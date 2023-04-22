@@ -4,18 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TaxProject.interfaces;
+using TaxProject.models;
 
 namespace TaxProject.services
 {
     public class ReportService : IReportService
     {
-        public void Report(decimal priceBefroe, decimal priceAfter, decimal discountAmount)
+        public void Report(Product product, decimal priceAfter, decimal discountAmount, decimal taxAmount)
         {
-            Console.WriteLine($"Price ${priceBefroe}");
-            Console.WriteLine($"Total Price After Tax and Discount ${priceAfter}");
+            Console.WriteLine($"Cost : ${product.Price}");
+            Console.WriteLine($"Tax : ${taxAmount}");
             if (discountAmount > 0)
             {
-                Console.WriteLine($"${discountAmount} amount was deduced");
+            Console.WriteLine($"Discounts : ${discountAmount}");
+            }
+            product.Expenses.ForEach(expense => Console.WriteLine($"{expense.Description} : ${expense.GetCost(product.Price)}"));
+            Console.WriteLine($"Total : ${priceAfter}");
+            if (discountAmount > 0)
+            {
+            Console.WriteLine($"${discountAmount} total discount");
             }
 
         }
