@@ -61,7 +61,7 @@ namespace TaxProject.services
             }
             var totalExpensesCost = product.GetTotalExpenses();
             totalPrice = product.Price + taxAmount - totalDiscount + totalExpensesCost;
-            _report.Report(product.Price, totalPrice, totalDiscount);
+            _report.Report(product, totalPrice, totalDiscount,taxAmount);
             return totalPrice;
         }
     }
