@@ -30,33 +30,33 @@ namespace TaxProject.services
             var totalPrice = 0m;
             if (discountOrder == DiscountOrder.BeforeTax && selectiveDiscountOrder == DiscountOrder.BeforeTax)
             {
-                 discountAmount = _discountCalculator.GetDiscountAmuont(price);
-                 selectiveDiscountAmount = _discountCalculator.GetSelectiveDiscountAmount(price, product.UPC);
+                 discountAmount = _discountCalculator.GetDiscountAmuont(price,product.UPC,true);
+                 selectiveDiscountAmount = _discountCalculator.GetSelectiveDiscountAmount(price, product.UPC,false);
                  totalDiscount = discountAmount + selectiveDiscountAmount;
                  price = price - totalDiscount;
                  taxAmount = _tax.GetTaxAmount(price);
             }
             else if (discountOrder == DiscountOrder.BeforeTax && selectiveDiscountOrder == DiscountOrder.AfterTax)
             {
-                 discountAmount = _discountCalculator.GetDiscountAmuont(price);
+                 discountAmount = _discountCalculator.GetDiscountAmuont(price, product.UPC, true);
                  price = price - discountAmount;
                  taxAmount = _tax.GetTaxAmount(price);
-                 selectiveDiscountAmount = _discountCalculator.GetSelectiveDiscountAmount(price, product.UPC);
+                 selectiveDiscountAmount = _discountCalculator.GetSelectiveDiscountAmount(price, product.UPC, false);
                  totalDiscount = discountAmount + selectiveDiscountAmount;
             }
             else if (discountOrder == DiscountOrder.AfterTax && selectiveDiscountOrder == DiscountOrder.BeforeTax)
             {
-                 selectiveDiscountAmount = _discountCalculator.GetSelectiveDiscountAmount(price, product.UPC);
+                 selectiveDiscountAmount = _discountCalculator.GetSelectiveDiscountAmount(price, product.UPC, false);
                  price = price - selectiveDiscountAmount;
                  taxAmount = _tax.GetTaxAmount(price);
-                 discountAmount = _discountCalculator.GetDiscountAmuont(price);
+                 discountAmount = _discountCalculator.GetDiscountAmuont(price, product.UPC, true);
                  totalDiscount = discountAmount + selectiveDiscountAmount;
             }
             else
             {
                  taxAmount = _tax.GetTaxAmount(price);
-                 discountAmount = _discountCalculator.GetDiscountAmuont(price);
-                 selectiveDiscountAmount = _discountCalculator.GetSelectiveDiscountAmount(price, product.UPC);
+                 discountAmount = _discountCalculator.GetDiscountAmuont(price, product.UPC, true);
+                 selectiveDiscountAmount = _discountCalculator.GetSelectiveDiscountAmount(price, product.UPC, false);
                  totalDiscount = discountAmount + selectiveDiscountAmount;
             }
             var totalExpensesCost = product.GetTotalExpenses();
