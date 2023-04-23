@@ -10,12 +10,13 @@ namespace TaxProject.services
         private readonly ITaxService _tax;
         private readonly IReportService _report;
         private readonly IDiscountCalculator _discountCalculator;
-
-        public PriceCalculator(ITaxService tax, IDiscountCalculator discountCalculator, IReportService report)
+        private readonly ICapService _capService;
+        public PriceCalculator(ITaxService tax, IDiscountCalculator discountCalculator, IReportService report, ICapService capService)
         {
             _tax = tax;
             _discountCalculator = discountCalculator;
             _report = report;
+            _capService = capService;
         }
 
         public decimal CalculateTotalPrice(Product product)
@@ -60,6 +61,7 @@ namespace TaxProject.services
                  totalDiscount = discountAmount + selectiveDiscountAmount;
             }
             var totalExpensesCost = product.GetTotalExpenses();
+            totalDiscount = _capService.ApplyCap(product.Price,totalDiscount);
             totalPrice = product.Price + taxAmount - totalDiscount + totalExpensesCost;
             _report.Report(product, totalPrice, totalDiscount,taxAmount);
             return totalPrice;

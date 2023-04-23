@@ -8,6 +8,6 @@ namespace TaxProject.interfaces
 {
     public interface ICapService
     {
-        decimal ApplyCap(decimal amount);
+        decimal ApplyCap(decimal price , decimal amount);
     }
 }

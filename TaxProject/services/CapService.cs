@@ -16,12 +16,12 @@ namespace TaxProject.services
             CapAmount = amount;
         }
 
-        public decimal ApplyCap(decimal amount)
+        public decimal ApplyCap(decimal price,decimal amount)
         {
             var cap = CapAmount;
             if (CapAmount <= 1)
             {
-                cap = Math.Round(CapAmount * amount,2);
+                cap = Math.Round(CapAmount * price, 2);
             }
             if (amount >= cap)
             {
