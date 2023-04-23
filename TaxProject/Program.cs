@@ -18,7 +18,8 @@ namespace TaxProject
             var selectiveDiscount = new SelectiveDiscountService(0.07m, 12345,DiscountOrder.AfterTax);
             var discountCalculator = new DiscountCalculator(discount, selectiveDiscount,DiscountType.Multiplicative);
             var report = new ReportService();
-            var priceCalculator = new PriceCalculator(tax, discountCalculator, report);
+            var cap = new CapService(0.20M);
+            var priceCalculator = new PriceCalculator(tax, discountCalculator, report,cap);
             priceCalculator.CalculateTotalPrice(product);
         }
     }
