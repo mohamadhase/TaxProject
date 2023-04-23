@@ -6,6 +6,7 @@ namespace TaxProject.services
     {
         public decimal DiscountPercentage { get; set; }
         public DiscountOrder DiscountOrder { get; set; }
+
         public DiscountService(decimal discountPercentage,DiscountOrder discountOrder)
         {
             DiscountPercentage = discountPercentage;
