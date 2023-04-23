@@ -21,7 +21,7 @@ namespace TaxProject.services
             var cap = CapAmount;
             if (CapAmount <= 1)
             {
-                cap = CapAmount * amount;
+                cap = Math.Round(CapAmount * amount,2);
             }
             if (amount >= cap)
             {
