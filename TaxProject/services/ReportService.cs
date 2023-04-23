@@ -12,19 +12,18 @@ namespace TaxProject.services
     {
         public void Report(Product product, decimal priceAfter, decimal discountAmount, decimal taxAmount)
         {
-            Console.WriteLine($"Cost : ${product.Price}");
-            Console.WriteLine($"Tax : ${taxAmount}");
+            Console.WriteLine($"Cost : {product.Price} {product.Currency}");
+            Console.WriteLine($"Tax : {taxAmount} {product.Currency}");
             if (discountAmount > 0)
             {
-            Console.WriteLine($"Discounts : ${discountAmount}");
+            Console.WriteLine($"Discounts : {discountAmount} {product.Currency}");
             }
-            product.Expenses.ForEach(expense => Console.WriteLine($"{expense.Description} : ${expense.GetCost(product.Price)}"));
-            Console.WriteLine($"Total : ${priceAfter}");
+            product.Expenses.ForEach(expense => Console.WriteLine($"{expense.Description} : {expense.GetCost(product.Price)} {product.Currency}"));
+            Console.WriteLine($"Total : {priceAfter} {product.Currency}");
             if (discountAmount > 0)
             {
-            Console.WriteLine($"${discountAmount} total discount");
+            Console.WriteLine($"{discountAmount} {product.Currency} total discount");
             }
-
         }
     }
 }

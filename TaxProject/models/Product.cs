@@ -1,4 +1,6 @@
-﻿namespace TaxProject.models
+﻿using TaxProject.enums;
+
+namespace TaxProject.models
 {
     public class Product
     {
@@ -18,13 +20,15 @@
         }
         public int UPC { get; set; }
         public List<BaseExpense> Expenses { get; set; }
+        public Currency Currency { get; set; }
 
-        public Product(string name, decimal price, int uPC)
+        public Product(string name, decimal price, int upc,Currency currency = Currency.USD)
         {
             Name = name;
             Price = price;
-            UPC = uPC;
+            UPC = upc;
             Expenses = new List<BaseExpense>();
+            Currency = currency;
         }
 
         public void AddExpense(BaseExpense expense)
