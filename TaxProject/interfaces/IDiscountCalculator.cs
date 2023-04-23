@@ -9,8 +9,8 @@ namespace TaxProject.interfaces
 {
    public interface IDiscountCalculator
     {
-        decimal GetDiscountAmuont(decimal price);
-        decimal GetSelectiveDiscountAmount(decimal price, int upc);
+        decimal GetDiscountAmuont(decimal price,int upc,bool first);
+        decimal GetSelectiveDiscountAmount(decimal price, int upc, bool first);
 
         DiscountOrder GetDiscountOrder();
         DiscountOrder GetSelectiveDiscountOrder();
